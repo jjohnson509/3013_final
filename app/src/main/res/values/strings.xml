@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Final_Project</string>
+    <string name="click_me">Click Me!</string>
+    <string name="score">000</string>
+    <string name="high_score">High Score: </string>
+    <string name="hScore">000</string>
+    <string name="timenumber">00:30</string>
+    <string name="time_left">Time Left:</string>
+</resources>
