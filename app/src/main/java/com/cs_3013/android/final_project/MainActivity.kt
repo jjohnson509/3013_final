@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var mTimer : Timer? = null
     private var arrayofAwards = BooleanArray(10)
     private var scoreCount = 0
+    private var cb: ChalkBoard? = null
 
 
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        cb = ChalkBoard(this)
+        backgroundLayout.addView(cb)
 
         val tvHighScore: TextView = findViewById(R.id.high_score_number)
         val btnClickMe: Button = findViewById(R.id.click_me_btn)
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         setUpSensor()
         //set up stress button click listener
         btnClickMe.setOnClickListener{
+            cb!!.wander()
             vibrate(10)
             if(firstPress){
                 mTimer!!.start()
