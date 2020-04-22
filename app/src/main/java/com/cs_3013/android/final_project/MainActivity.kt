@@ -1,6 +1,7 @@
 package com.cs_3013.android.final_project
 
 import android.content.Context
+import android.graphics.Point
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -10,6 +11,7 @@ import android.media.RingtoneManager
 import android.net.Uri
 import android.os.*
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -53,6 +55,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         mTimer = Timer(30000)
         setUpSensor()
+
+
         //set up stress button click listener
         btnClickMe.setOnClickListener{
             cb!!.wander()
@@ -100,6 +104,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
     private fun playSound(){
+        val btnClick :View = findViewById(R.id.click_me_btn)
+        val xyPoint : Point? = getCenterPointOfView(btnClick)
+        if (xyPoint != null) {
+            Log.v("XY","x: ${xyPoint.x}    y: ${xyPoint.y}")
+        }
         soundCount += 1
         mediaPlayer = MediaPlayer.create(this, R.raw.alien_click)
         try{
@@ -132,6 +141,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     }
 
     private fun checkScore(score: Int){
+
         when(score){
             10 -> {
                 Toast.makeText(this@MainActivity, "Guess what!?", Toast.LENGTH_SHORT).show()
@@ -293,6 +303,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 //            r.play()
             }
         }
+    }
+
+    private fun getCenterPointOfView(view: View): Point? {
+        val location = IntArray(2)
+        view.getLocationOnScreen(location)
+        val x = location[0] + view.width / 2
+        val y = location[1] + view.height / 2
+        return Point(x, y)
     }
 
 

@@ -4,10 +4,12 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
-import android.view.View
-import android.view.animation.BounceInterpolator
 import android.graphics.Paint
-import java.time.Duration
+import android.graphics.Point
+import android.view.View
+import android.view.WindowManager
+import android.view.animation.BounceInterpolator
+
 
 class ChalkBoard(context: Context) : View(context) {
     private var displayWidth: Int = 0
@@ -32,6 +34,15 @@ class ChalkBoard(context: Context) : View(context) {
     private var moveFlag = true
     private var paint = Paint()
 
+    init {
+        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val screen = wm.defaultDisplay
+        val size = Point()
+        screen.getSize(size)
+        displayWidth = size.x
+        displayHeight = size.y
+    }
+
     fun wander() {
         val anim: ObjectAnimator
         if (moveFlag) {
@@ -49,6 +60,7 @@ class ChalkBoard(context: Context) : View(context) {
                 anim = getObjectAnimator(500, "fraction", 0.0f, 1.0f)
                 anim.interpolator = BounceInterpolator()
                 anim.start()
+                setFraction(fraction)
             }
         }
     }
@@ -82,4 +94,6 @@ class ChalkBoard(context: Context) : View(context) {
     companion object {
         const val BOUNCE = 4
     }
+
+
 }
