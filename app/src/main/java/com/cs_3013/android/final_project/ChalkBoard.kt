@@ -18,7 +18,7 @@ class ChalkBoard(context: Context) : View(context) {
     private var startX = 55.0f
     private var width = 300.0f
     private var stopX = startX + width
-    private var height = 400.0f
+    private var height = 300.0f
     private var top = 100.0f
     private var bottom = top + height
     private var deltaX = 40.0f
@@ -60,7 +60,6 @@ class ChalkBoard(context: Context) : View(context) {
                 anim = getObjectAnimator(500, "fraction", 0.0f, 1.0f)
                 anim.interpolator = BounceInterpolator()
                 anim.start()
-                setFraction(fraction)
             }
         }
     }
@@ -71,7 +70,7 @@ class ChalkBoard(context: Context) : View(context) {
         return animation
     }
 
-    fun setFraction(value: Float) {
+    private fun setFraction(value: Float) {
         fraction = value
         step()
     }
@@ -87,8 +86,13 @@ class ChalkBoard(context: Context) : View(context) {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        paint.color = Color.BLUE
-        canvas.drawRect(x1, y1, x2, y2, paint)
+        paint.color = Color.RED
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 12f
+        canvas.drawRoundRect(x1, y1, x2, y2, 5000f, 5000f, paint)
+        paint.color = Color.argb(100, 139,0,0)
+        paint.style = Paint.Style.FILL
+        canvas.drawRoundRect(x1, y1, x2, y2, 3000f, 3000f, paint)
     }
 
     companion object {

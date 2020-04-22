@@ -12,15 +12,18 @@ import android.net.Uri
 import android.os.*
 import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.math.sqrt
-
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
@@ -35,8 +38,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var arrayofAwards = BooleanArray(10)
     private var scoreCount = 0
     private var cb: ChalkBoard? = null
-
-
+    private var cb2: ChalkBoard? = null
+    private var cb3 : ChalkBoard? = null
+    var scoreCanChange = true
 
 
 
@@ -44,7 +48,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         cb = ChalkBoard(this)
+        cb2 = ChalkBoard(this)
+        cb3 = ChalkBoard(this)
         backgroundLayout.addView(cb)
+        backgroundLayout.addView(cb2)
+        backgroundLayout.addView(cb3)
 
         val tvHighScore: TextView = findViewById(R.id.high_score_number)
         val btnClickMe: Button = findViewById(R.id.click_me_btn)
@@ -59,11 +67,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         //set up stress button click listener
         btnClickMe.setOnClickListener{
+
+            //
             cb!!.wander()
+            cb2!!.wander()
+            cb3!!.wander()
             vibrate(10)
             if(firstPress){
                 mTimer!!.start()
                 firstPress = false
+
             }
             playSound()
             scoreCount += 1
@@ -74,6 +87,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 tvHighScore.text = scoreCount.toString().padStart(3, '0')
 
             }
+
+
         }
     }
 
@@ -234,6 +249,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     RingtoneManager.getRingtone(applicationContext, notification)
                 r.play()
                 vibrate(3000)
+                val btnClick = findViewById<View>(R.id.click_me_btn)
+                btnClick.visibility = View.GONE
                 mTimer?.cancel()
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -246,12 +263,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         if(prevTimer != null){
             val millis = prevTimer.millisUntilFinished + TimeUnit.SECONDS.toMillis(addTime.toLong())
+            Log.v("Timer", "millis: $millis")
             prevTimer.cancel()
             mTimer = Timer(millis)
             mTimer!!.start()
         }
-
-
 
     }
 
@@ -279,22 +295,26 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val x = event!!.values[0]
         val y = event.values[1]
         val z = event.values[2]
+
         mAccelLast = mAccelCurrent
         mAccelCurrent = sqrt((x * x + y * y + z * z).toDouble()).toFloat()
         val delta = mAccelCurrent - mAccelLast
         mAccel = mAccel * 0.9f + delta // perform low-cut filter
-        //todo add check for if shake has happened within the last 2-3 seconds
-        if(mAccel > 10){
+        if(mAccel > 25){
             if(firstPress){
                 return
             }
             else {
-                if(scoreCount - 5 >= 0) {
-                    editTimer(mTimer, 5)
+                if(scoreCount - 5 >= 0 && scoreCanChange) {
+                    editTimer(mTimer, 15)
                     Toast.makeText(this@MainActivity, "Added some Time Bitch!", Toast.LENGTH_SHORT)
                         .show()
                     scoreCount -= 5
                     scoreText.text = scoreCount.toString().padStart(3, '0')
+                    scoreCanChange = false
+                    Handler().postDelayed({
+                        scoreCanChange = true
+                    }, 5000)
                 }
 //            val notification: Uri =
 //                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -317,6 +337,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
+
+
 
 
 }

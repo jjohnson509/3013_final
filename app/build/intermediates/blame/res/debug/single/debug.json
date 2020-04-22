@@ -16,6 +16,10 @@
         "source": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\build\\intermediates\\res\\merged\\debug\\anim_sequestial_move.xml.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\src\\main\\res\\anim\\sequestial_move.xml"
+    },
+    {
         "merged": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\build\\intermediates\\res\\merged\\debug\\drawable_scoreboard.xml.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\src\\main\\res\\drawable\\scoreboard.xml"
     },
