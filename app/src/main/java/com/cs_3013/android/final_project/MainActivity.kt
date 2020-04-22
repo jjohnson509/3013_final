@@ -16,6 +16,7 @@ import android.view.animation.Animation
 import android.view.animation.Animation.AnimationListener
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -57,6 +58,20 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val tvHighScore: TextView = findViewById(R.id.high_score_number)
         val btnClickMe: Button = findViewById(R.id.click_me_btn)
         val scoreTextView: TextView = findViewById(R.id.scoreText)
+        val btnkittyAttack: Button = findViewById(R.id.kitty_attack_btn)
+        val kittyImageView: ImageView = findViewById(R.id.kitty_image)
+
+
+        btnkittyAttack.visibility = View.INVISIBLE
+        kittyImageView.visibility = View.INVISIBLE
+        btnkittyAttack.setOnClickListener{
+            kittyImageView.visibility = View.INVISIBLE
+            btnkittyAttack.visibility = View.INVISIBLE
+            click_me_btn.visibility = View.VISIBLE
+
+        }
+
+
 
         tvHighScore.text = getHighScore().toString().padStart(3, '0')
 
@@ -186,6 +201,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     editTimer(mTimer, 5)
                 }
             }
+            20 ->{
+                click_me_btn.visibility = View.INVISIBLE
+                kitty_image.visibility = View.VISIBLE
+                kitty_attack_btn.visibility = View.VISIBLE
+                Toast.makeText(this@MainActivity, "OH NO! KITTY ATTACK!!", Toast.LENGTH_LONG).show()
+                if(!arrayofAwards[3]) {
+                    arrayofAwards[3] = true
+                    editTimer(mTimer, -5)
+                }
+            }
             150 ->{
                 Toast.makeText(this@MainActivity, "You trying to go to the PARK?!?", Toast.LENGTH_SHORT).show()
                 if(!arrayofAwards[4]) {
@@ -249,8 +274,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     RingtoneManager.getRingtone(applicationContext, notification)
                 r.play()
                 vibrate(3000)
-                val btnClick = findViewById<View>(R.id.click_me_btn)
-                btnClick.visibility = View.GONE
                 mTimer?.cancel()
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -6,4 +6,6 @@
     <string name="hScore">000</string>
     <string name="timenumber">00:30</string>
     <string name="time_left">Time Left:</string>
+    <string name="kitty_attack_btn">SLAP</string>
+    <string name="kitty_image">KITTY ATTACK!</string>
 </resources>
