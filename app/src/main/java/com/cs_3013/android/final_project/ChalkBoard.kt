@@ -2,10 +2,7 @@ package com.cs_3013.android.final_project
 
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Point
+import android.graphics.*
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.BounceInterpolator

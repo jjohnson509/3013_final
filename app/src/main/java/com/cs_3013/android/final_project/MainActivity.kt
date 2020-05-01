@@ -12,15 +12,8 @@ import android.net.Uri
 import android.os.*
 import android.util.Log
 import android.view.View
-import android.view.animation.Animation
-import android.view.animation.Animation.AnimationListener
-import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -40,9 +33,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var scoreCount = 0
     private var cb: ChalkBoard? = null
     private var cb2: ChalkBoard? = null
-    private var cb3 : ChalkBoard? = null
+    private var cb3: ChalkBoard? = null
     var scoreCanChange = true
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,20 +50,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         val tvHighScore: TextView = findViewById(R.id.high_score_number)
         val btnClickMe: Button = findViewById(R.id.click_me_btn)
         val scoreTextView: TextView = findViewById(R.id.scoreText)
-        val btnkittyAttack: Button = findViewById(R.id.kitty_attack_btn)
-        val kittyImageView: ImageView = findViewById(R.id.kitty_image)
-
-
-        btnkittyAttack.visibility = View.INVISIBLE
-        kittyImageView.visibility = View.INVISIBLE
-        btnkittyAttack.setOnClickListener{
-            kittyImageView.visibility = View.INVISIBLE
-            btnkittyAttack.visibility = View.INVISIBLE
-            click_me_btn.visibility = View.VISIBLE
-
-        }
-
-
 
         tvHighScore.text = getHighScore().toString().padStart(3, '0')
 
@@ -202,10 +180,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 }
             }
             20 ->{
-                click_me_btn.visibility = View.INVISIBLE
-                kitty_image.visibility = View.VISIBLE
-                kitty_attack_btn.visibility = View.VISIBLE
-                Toast.makeText(this@MainActivity, "OH NO! KITTY ATTACK!!", Toast.LENGTH_LONG).show()
                 if(!arrayofAwards[3]) {
                     arrayofAwards[3] = true
                     editTimer(mTimer, -5)
