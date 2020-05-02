@@ -28,3 +28,9 @@ As this is an open-ended project, the grading si somewhat open-ended also. The F
 The Above is not a complete list - it is intended to give you an idea of what I am looking for. Please don't hesitate to ask me questions about your project.
 
 ---
+
+### Application Description:
+During these trying times, everyone is looking to get their mind off the quarantine. So we decided to design a simple app that would allow someone to turn their brain off...
+
+1. When first starting the app you will see the following screen:
+    ![](outputs/home_screen.png)
