@@ -3,6 +3,7 @@ package com.cs_3013.android.final_project
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
+import android.graphics.BitmapFactory.decodeResource
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.BounceInterpolator
@@ -30,6 +31,11 @@ class ChalkBoard(context: Context) : View(context) {
     private var style = BOUNCE
     private var moveFlag = true
     private var paint = Paint()
+    private val bitmap by lazy {                                            //creates kitty bitmap
+        decodeResource(resources, R.drawable.kitty_attack)
+    }
+    private var rect = Rect(x1.toInt(),y1.toInt(),x2.toInt(),y2.toInt())    //rect for kitty bitmap
+
 
     init {
         val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -78,6 +84,7 @@ class ChalkBoard(context: Context) : View(context) {
         y1 = oldY + fraction * deltaY
         x2 = x1 + width
         y2 = y1 + height
+        rect = Rect(x1.toInt(), y1.toInt(), x2.toInt(), y2.toInt())                     //reassign rect values to update movement
         invalidate()
     }
 
@@ -86,10 +93,11 @@ class ChalkBoard(context: Context) : View(context) {
         paint.color = Color.RED
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 12f
-        canvas.drawRoundRect(x1, y1, x2, y2, 5000f, 5000f, paint)
+       // canvas.drawRoundRect(x1, y1, x2, y2, 5000f, 5000f, paint)
         paint.color = Color.argb(100, 139,0,0)
         paint.style = Paint.Style.FILL
-        canvas.drawRoundRect(x1, y1, x2, y2, 3000f, 3000f, paint)
+       // canvas.drawRoundRect(x1, y1, x2, y2, 3000f, 3000f, paint)
+        canvas.drawBitmap(bitmap, null, rect, null)                     //draws that kitty
     }
 
     companion object {

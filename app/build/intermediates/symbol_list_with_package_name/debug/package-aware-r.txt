@@ -664,6 +664,7 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable kitty_attack
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -956,6 +957,8 @@ string app_name
 string click_me
 string hScore
 string high_score
+string kitty_attack_btn
+string kitty_image
 string score
 string search_menu_title
 string status_bar_notification_info_overflow
