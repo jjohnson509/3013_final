@@ -31,13 +31,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var mAccelLast = 0f
     private var mTimer: Timer? = null
     private var arrayofAwards = BooleanArray(10)
-//    private var scoreCount = 0
+    private var cbCount = 0
+    //    private var scoreCount = 0
     private var cb: ChalkBoard? = null
+    private var cb1: ChalkBoard? = null
     private var cb2: ChalkBoard? = null
     private var cb3: ChalkBoard? = null
+    private var cb4: ChalkBoard? = null
+    private var cb5: ChalkBoard? = null
+    private var cb6: ChalkBoard? = null
+    private var cb7: ChalkBoard? = null
+    private var cb8: ChalkBoard? = null
+    private var cb9: ChalkBoard? = null
     private val openURL = Intent(Intent.ACTION_VIEW)
     private val rewardArray = Array<String>(10) { "it = $it" }
     var scoreCanChange = true
+    private var daEnd = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,8 +75,15 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             //
             cb!!.wander()
+            cb1?.wander()
             cb2?.wander()
             cb3?.wander()
+            cb4?.wander()
+            cb5?.wander()
+            cb6?.wander()
+            cb7?.wander()
+            cb8?.wander()
+            cb9?.wander()
             vibrate(10)
             if (firstPress) {
                 mTimer!!.start()
@@ -128,12 +144,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
     private fun playSound() {
-//        val btnClick :View = findViewById(R.id.click_me_btn)
-//        val xyPoint : Point? = getCenterPointOfView(btnClick)
-//        if (xyPoint != null) {
-//            Log.v("XY","x: ${xyPoint.x}    y: ${xyPoint.y}")
-//        }
-//        soundCount += 1
         mediaPlayer = MediaPlayer.create(this, R.raw.alien_click)
         try {
             if (mediaPlayer!!.isPlaying) {
@@ -165,7 +175,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         return prefs.getInt("highScore", 0)
     }
 
-
+    override fun onStop() {
+        val scoreTextView: TextView = findViewById(R.id.scoreText)
+        super.onStop()
+        scoreCount = 0
+        scoreTextView.text = scoreCount.toString().padStart(3, '0')
+    }
 
     private fun checkScore(score: Int) {
 
@@ -175,29 +190,26 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 if (!arrayofAwards[0]) {
                     arrayofAwards[0] = true
                     editTimer(mTimer, 10)
-
-                    openURL.data =
-                        Uri.parse("https://media.makeameme.org/created/break-time-wheres.jpg")
-                    startActivity(openURL)
                 }
+
             }
             25 -> {
                 Toast.makeText(this@MainActivity, "Chicken Butt!!", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[1]) {
                     arrayofAwards[1] = true
                     editTimer(mTimer, 5)
-                    cb2 = ChalkBoard(this)
-                    backgroundLayout.addView(cb2)
+                    cb1 = ChalkBoard(this)
+                    backgroundLayout.addView(cb1)
                 }
+
             }
             50 -> {
                 Toast.makeText(this@MainActivity, "Wanna hear a joke?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[2]) {
                     arrayofAwards[2] = true
                     editTimer(mTimer, 5)
-                    cb3 = ChalkBoard(this)
-                    backgroundLayout.addView(cb3)
-
+                    cb2 = ChalkBoard(this)
+                    backgroundLayout.addView(cb2)
                 }
             }
             100 -> {
@@ -205,13 +217,19 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 if (!arrayofAwards[3]) {
                     arrayofAwards[3] = true
                     editTimer(mTimer, 5)
+                    cb3 = ChalkBoard(this)
+                    backgroundLayout.addView(cb3)
                 }
+
             }
-            20 -> {
+            120 -> {
                 if (!arrayofAwards[3]) {
                     arrayofAwards[3] = true
                     editTimer(mTimer, -5)
+                    cb4 = ChalkBoard(this)
+                    backgroundLayout.addView(cb4)
                 }
+
             }
             150 -> {
                 Toast.makeText(
@@ -222,7 +240,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 if (!arrayofAwards[4]) {
                     arrayofAwards[4] = true
                     editTimer(mTimer, 5)
+                    cb5 = ChalkBoard(this)
+                    backgroundLayout.addView(cb5)
                 }
+
             }
             200 -> {
                 Toast.makeText(this@MainActivity, "What about the strip club?!", Toast.LENGTH_SHORT)
@@ -230,20 +251,32 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 if (!arrayofAwards[5]) {
                     arrayofAwards[5] = true
                     editTimer(mTimer, 10)
+                    cb6 = ChalkBoard(this)
+                    backgroundLayout.addView(cb6)
                 }
+
             }
             400 -> {
                 Toast.makeText(this@MainActivity, "You like toast?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[6]) {
                     arrayofAwards[6] = true
                     editTimer(mTimer, 5)
+                    cb7 = ChalkBoard(this)
+                    backgroundLayout.addView(cb7)
                 }
+            }
+            420 -> {
+                Toast.makeText(this@MainActivity, "Pause for the cause!", Toast.LENGTH_SHORT).show()
+                cb8 = ChalkBoard(this)
+                backgroundLayout.addView(cb8)
             }
             800 -> {
                 Toast.makeText(this@MainActivity, "Cinnamon Rolls?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[7]) {
                     arrayofAwards[7] = true
                     editTimer(mTimer, 5)
+                    cb9 = ChalkBoard(this)
+                    backgroundLayout.addView(cb9)
                 }
             }
             1000 -> {
@@ -265,9 +298,52 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 }
             }
         }
+
+        if (daEnd) {
+            when {
+                scoreCount <= 10 -> {
+                    openURL.data =
+                        Uri.parse("https://www.thenation.com/wp-content/uploads/2019/12/mbeubeuss-fernelius-4-otu-img.jpg")
+                    startActivity(openURL)
+                }
+                scoreCount in 11..50 -> {
+                    openURL.data =
+                        Uri.parse("https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/g/giraffe_thumb.JPG")
+                    startActivity(openURL)
+                }
+                scoreCount in 101..200 -> {
+                    openURL.data =
+                        Uri.parse("https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/05/29/01/harambe.jpg?w968h681")
+                    startActivity(openURL)
+
+                }
+                scoreCount in 201..300 -> {
+                    openURL.data =
+                        Uri.parse("https://c7.uihere.com/files/169/350/488/ducky-dinosaur-foot-the-land-before-time-meme-dinosaur-cartoon.jpg")
+                    startActivity(openURL)
+
+                }
+                scoreCount in 301..400 -> {
+                    openURL.data =
+                        Uri.parse("https://www.syfy.com/sites/syfy/files/styles/1200x680_hero/public/2017/08/the-jetsons-1962.jpg")
+                    startActivity(openURL)
+
+                }
+                scoreCount in 401..419-> {
+                    openURL.data =
+                        Uri.parse("https://media.makeameme.org/created/break-time-wheres.jpg")
+                    startActivity(openURL)
+                }
+                scoreCount >= 420 -> {
+                    openURL.data =
+                        Uri.parse("https://i.kym-cdn.com/entries/icons/mobile/000/010/879/420d.jpg")
+                    startActivity(openURL)
+                }
+            }
+        }
     }
 
-    companion object{
+    companion object {
         var scoreCount = 0
     }
 
@@ -289,8 +365,11 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     RingtoneManager.getRingtone(applicationContext, notification)
                 r.play()
                 vibrate(3000)
-                Handler().postDelayed({ checkScore(scoreCount) }, 5000)
+                daEnd = true
+                checkScore(scoreCount)
                 mTimer?.cancel()
+                onStop()
+                recreate()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -348,7 +427,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             } else {
                 if (scoreCount - 5 >= 0 && scoreCanChange) {
                     editTimer(mTimer, 15)
-                    Toast.makeText(this@MainActivity, "Added some Time Bitch!", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@MainActivity, "Added some time!", Toast.LENGTH_SHORT)
                         .show()
                     scoreCount -= 5
                     scoreText.text = scoreCount.toString().padStart(3, '0')
