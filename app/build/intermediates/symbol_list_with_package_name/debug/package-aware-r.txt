@@ -925,6 +925,7 @@ layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 mipmap ic_launcher_round
 raw alien_click
+raw cat_screech
 raw soft_click
 string abc_action_bar_home_description
 string abc_action_bar_up_description

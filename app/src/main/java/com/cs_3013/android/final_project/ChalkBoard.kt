@@ -4,15 +4,21 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.*
 import android.graphics.BitmapFactory.decodeResource
+import android.media.MediaPlayer
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
 import android.view.animation.BounceInterpolator
+import android.widget.TextView
 
 
 class ChalkBoard(context: Context) : View(context) {
+
+    private var kittyClickCount = 0
     private var displayWidth: Int = 0
     private var displayHeight: Int = 0
-
+    private var mediaPlayer: MediaPlayer? = null
     private var startX = 55.0f
     private var width = 300.0f
     private var stopX = startX + width
@@ -84,20 +90,92 @@ class ChalkBoard(context: Context) : View(context) {
         y1 = oldY + fraction * deltaY
         x2 = x1 + width
         y2 = y1 + height
-        rect = Rect(x1.toInt(), y1.toInt(), x2.toInt(), y2.toInt())                     //reassign rect values to update movement
+        this.rect = Rect(x1.toInt(), y1.toInt(), x2.toInt(), y2.toInt())                     //reassign rect values to update movement
         invalidate()
     }
 
     override fun onDraw(canvas: Canvas) {
+
         super.onDraw(canvas)
-        paint.color = Color.RED
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 12f
+//        paint.color = Color.RED
+//        paint.style = Paint.Style.STROKE
+//        paint.strokeWidth = 12f
        // canvas.drawRoundRect(x1, y1, x2, y2, 5000f, 5000f, paint)
-        paint.color = Color.argb(100, 139,0,0)
-        paint.style = Paint.Style.FILL
+//        paint.color = Color.argb(100, 139,0,0)
+//        paint.style = Paint.Style.FILL
        // canvas.drawRoundRect(x1, y1, x2, y2, 3000f, 3000f, paint)
-        canvas.drawBitmap(bitmap, null, rect, null)                     //draws that kitty
+        canvas.drawBitmap(bitmap, null, this.rect, paint)                     //draws that kitty
+
+    }
+
+    private fun playSound(){
+        mediaPlayer = MediaPlayer.create(this.context, R.raw.cat_screech)
+        try{
+            if(mediaPlayer!!.isPlaying) {
+                mediaPlayer!!.stop()
+                mediaPlayer!!.release()
+                playSound()
+            }
+        }catch(e: Exception){
+            e.printStackTrace()
+        }
+        mediaPlayer?.start()
+        mediaPlayer!!.setOnCompletionListener {
+            it.release()
+        }
+
+
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val x = event.x
+        val y = event.y
+
+        invalidate()
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                //Check if the x and y position of the touch is inside the bitmap
+
+                if (this.rect.contains(x.toInt(),y.toInt())){
+                    Log.e("TOUCHED", "X: $x Y: $y");
+                    //Bitmap touched
+                    performClick()
+
+
+
+                }
+                return true
+            }
+
+        }
+        return false
+    }
+
+    override fun performClick(): Boolean {
+
+        when (kittyClickCount) {
+            0 -> {
+                playSound()
+                paint.color = Color.argb(150, 100, 40, 0)
+                kittyClickCount++
+                MainActivity.scoreCount += 5
+
+            }
+            1 -> {
+                playSound()
+                paint.color = Color.argb(50, 100, 40, 0)
+                kittyClickCount++
+                MainActivity.scoreCount += 5
+
+            }
+            else -> {
+                playSound()
+                paint.color = Color.argb(0, 100, 40, 0)
+                MainActivity.scoreCount += 5
+
+            }
+        }
+        return super.performClick()
     }
 
     companion object {
