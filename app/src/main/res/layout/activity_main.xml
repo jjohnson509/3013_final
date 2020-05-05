@@ -29,9 +29,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/scoreboard"
         android:fontFamily="monospace"
-        android:textColor="@color/colorPrimary"
         android:text="@string/score"
         android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/click_me_btn"
@@ -87,6 +87,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.147" />
 
+
     <RelativeLayout
         android:id="@+id/backgroundLayout"
         android:layout_width="409dp"
@@ -100,22 +101,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:layout_constraintVertical_bias="1.0" >
-
-        <ImageView
-            android:id="@+id/kitty_image"
-            android:layout_width="444dp"
-            android:layout_height="714dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="false"
-            android:contentDescription="@string/kitty_image"
-            app:srcCompat="@drawable/kitty_attack" />
-
-        <Button
-            android:id="@+id/kitty_attack_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kitty_attack_btn" />
-    </RelativeLayout>
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

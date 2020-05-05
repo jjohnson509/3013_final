@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\jajoh\\Desktop\\Final_Project\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
+            "outputFile": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nb\\values-nb.xml",
             "map": [
                 {
                     "source": "C:\\Users\\jajoh\\.gradle\\caches\\transforms-2\\files-2.1\\4b9870924e6a59106ae571b6074fa673\\core-1.2.0\\res\\values-nb\\values-nb.xml",
