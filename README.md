@@ -276,7 +276,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **onFinish**
     - Description:
-        -
+        - Displays a notification when the game ends
     ```kotlin
     override fun onFinish() {
             try {
@@ -383,10 +383,10 @@ During these trying times, everyone is looking to get their mind off the quarant
     ```
 
 #### ChalkBoard.kt
-- Description
+- this is the canvas where animations are added to the kitty images
     - **class ChalkBoard**
     - Description:
-        - coming soon!
+        - This class controls the animations for the application
 
     ```kotlin
     class ChalkBoard(context: Context) : View(context) {
@@ -425,7 +425,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **wander**
     - Description:
-        - coming soon!
+        - Method moves the images around the screen
 
     ```kotlin
     fun wander() {
@@ -452,7 +452,9 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **getObjectAnimator**
     - Description:
-        - coming soon!
+        - This subclass of ValueAnimator provides support for animating properties on target objects.
+        - The constructors of this class take parameters to define the target object that will be animated as well as the name of the property that will be animated.
+        - Appropriate set/get functions are then determined internally and the animation will call these functions as necessary to animate the property.
 
     ```kotlin
     private fun getObjectAnimator(duration: Int, variable: String, initialValue: Float, finalValue: Float): ObjectAnimator{
@@ -464,7 +466,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **setFraction**
     - Description:
-        - coming soon!
+        - sets the value of the step method
 
     ```kotlin
     private fun setFraction(value: Float) {
@@ -475,7 +477,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **step**
     - Description:
-        - coming soon!
+        - moves the image around the screen.
 
     ```kotlin
     private fun step() {
@@ -489,7 +491,10 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **onDraw**
     - Description:
-        - coming soon!
+        - The most important step in drawing a custom view is to override the onDraw() method.
+        - The parameter to onDraw() is a Canvas object that the view can use to draw itself.
+        - The Canvas class defines methods for drawing text, lines, bitmaps, and many other graphics primitives.
+        - You can use these methods in onDraw() to create your custom user interface (UI).
 
     ```kotlin
     override fun onDraw(canvas: Canvas) {
@@ -506,7 +511,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **companion object**
     - Description:
-        - coming soon!
+        - The companion objects can access private members of the class. Hence, they can be used to implement the factory method patterns.
 
     ```kotlin
     companion object {
