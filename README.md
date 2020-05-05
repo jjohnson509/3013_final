@@ -6,7 +6,7 @@ This assignment is open-ended. You are to use your creativity to develop an Andr
 1. The App must be original to you. How the App works and what it looks like must not be one found in any tutorials or elsewhere.
 2. The App must make use of one or more sensors.
 3. The App must do at least two of the following:
-    - Use persitance
+    - Use persistence
     - Get information from a server
     - Interact with another App on this device using *intents*
     - Interact with another device using **Bluetooth** or some other means.
@@ -23,7 +23,7 @@ As this is an open-ended project, the grading si somewhat open-ended also. The F
 - The overall quality (basically, does it look good?).
 - If it is a game, is it fun?
 - The Quality of the writeup. Does it clearly tell me what your App does and how to interact with it.
-- The quality of the presenation
+- The quality of the presentation
 
 The Above is not a complete list - it is intended to give you an idea of what I am looking for. Please don't hesitate to ask me questions about your project.
 
@@ -57,7 +57,9 @@ During these trying times, everyone is looking to get their mind off the quarant
 - This is the main .kt file of the program and contains the following functions:
     - **onCreate**
     - Description:
-        - coming soon!
+        - You must implement this callback, which fires when the system first creates the activity.
+        - On activity creation, the activity enters the Created state.
+        - In the onCreate() method, you perform basic application startup logic that should happen only once for the entire life of the activity.
     ```kotlin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +104,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **vibrate**
     - Description:
-        - coming soon!
+        -  Operates the vibrator on the device.
     ```kotlin
     private fun vibrate(duration: Int){
         val vibrator = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
@@ -116,7 +118,7 @@ During these trying times, everyone is looking to get their mind off the quarant
     ```
     - **setUpSensor**
     - Description:
-        - coming soon!
+        - Sets up the sensor manager for the Accelerometer.
     ```kotlin
     private fun setUpSensor(){
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -137,7 +139,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **playSound**
     - Description:
-        - coming soon!
+        - plays a sound at various points within the application
     ```kotlin
     private fun playSound(){
         val btnClick :View = findViewById(R.id.click_me_btn)
@@ -165,7 +167,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **setHighScore**
     - Description:
-        - coming soon!
+        - creates a shared preference to save the high score of the current user.
     ```kotlin
     private fun setHighScore(score: Int){
         val prefs = getSharedPreferences("puffNstuff", Context.MODE_PRIVATE)
@@ -177,7 +179,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **getHighScore**
     - Description:
-        - coming soon!
+        - similar to `setHighScore`, allows the user to get the current high score.
     ```kotlin
      private fun getHighScore(): Int {
         val prefs = getSharedPreferences("puffNstuff", Context.MODE_PRIVATE)
@@ -187,7 +189,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **checkScrore**
     - Description:
-        - coming soon!
+        - This method is how we implement various messages and "checkpoints" throughout the game.
     ```kotlin
     private fun checkScore(score: Int){
 
@@ -274,7 +276,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **onFinish**
     - Description:
-        - coming soon!
+        -
     ```kotlin
     override fun onFinish() {
             try {
@@ -293,7 +295,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **editTimer**
     - Description:
-        - coming soon!
+        - Edits the time left in the game.
     ```kotlin
     private fun editTimer(prevTimer: Timer?, addTime: Int){
         if(prevTimer != null){
@@ -308,7 +310,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **startTimer**
     - Description:
-        - coming soon!
+        - Starts the game timer.
     ```kotlin
     private fun startTimer(){
         mTimer = Timer(30000)
@@ -318,7 +320,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **timString**
     - Description:
-        - coming soon!
+        - creates a string format of the game time.
     ```kotlin
     private fun timeString(millisUntilFinished:Long):String{
         val minutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished)
@@ -335,7 +337,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **onSensorChanged**
     - Description:
-        - coming soon!
+        - When the sensor changes, adds time
     ```kotlin
     override fun onSensorChanged(event: SensorEvent?) {
         val x = event!!.values[0]
@@ -369,7 +371,7 @@ During these trying times, everyone is looking to get their mind off the quarant
 
     - **getCenterPointOfView**
     - Description:
-        - coming soon!
+        - Get the center of the point of view.
     ```kotlin
     private fun getCenterPointOfView(view: View): Point? {
         val location = IntArray(2)
