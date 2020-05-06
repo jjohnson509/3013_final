@@ -159,7 +159,6 @@ class ChalkBoard(context: Context) : View(context) {
                 paint.color = Color.argb(150, 100, 40, 0)
                 kittyClickCount++
                 MainActivity.scoreCount += 5
-
             }
             1 -> {
                 playSound()

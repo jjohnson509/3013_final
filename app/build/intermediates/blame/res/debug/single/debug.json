@@ -8,6 +8,10 @@
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\scoreboard.xml"
     },
     {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\raw_annoy_buzz.wav.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\raw\\annoy_buzz.wav"
+    },
+    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },

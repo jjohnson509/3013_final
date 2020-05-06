@@ -23,7 +23,6 @@ import kotlin.math.sqrt
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
     private var mediaPlayer: MediaPlayer? = null
-    private var soundCount = 0
     private var firstPress = true
     private lateinit var mSensorManager: SensorManager
     private var mAccel = 0f
@@ -31,8 +30,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var mAccelLast = 0f
     private var mTimer: Timer? = null
     private var arrayofAwards = BooleanArray(10)
-    private var cbCount = 0
-    //    private var scoreCount = 0
     private var cb: ChalkBoard? = null
     private var cb1: ChalkBoard? = null
     private var cb2: ChalkBoard? = null
@@ -44,8 +41,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var cb8: ChalkBoard? = null
     private var cb9: ChalkBoard? = null
     private val openURL = Intent(Intent.ACTION_VIEW)
-    private val rewardArray = Array<String>(10) { "it = $it" }
-    var scoreCanChange = true
+    private var scoreCanChange = true
     private var daEnd = false
 
 
@@ -53,11 +49,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         cb = ChalkBoard(this)
-//        cb2 = ChalkBoard(this)
-//        cb3 = ChalkBoard(this)
         backgroundLayout.addView(cb)
-//        backgroundLayout.addView(cb2)
-//        backgroundLayout.addView(cb3)
 
         val tvHighScore: TextView = findViewById(R.id.high_score_number)
         val btnClickMe: Button = findViewById(R.id.click_me_btn)
@@ -72,8 +64,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         //set up stress button click listener
         btnClickMe.setOnClickListener {
-
-            //
             cb!!.wander()
             cb1?.wander()
             cb2?.wander()
@@ -105,7 +95,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             scoreTextView.text = scoreCount.toString().padStart(3, '0')
         }
 
-
     }
 
     private fun vibrate(duration: Int) {
@@ -122,9 +111,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-    private fun getScore(): Int {
-        return scoreCount
-    }
 
     private fun setUpSensor() {
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -162,6 +148,26 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     }
 
+    private fun playSoundBuzz() {
+        mediaPlayer = MediaPlayer.create(this, R.raw.annoy_buzz)
+        try {
+            if (mediaPlayer!!.isPlaying) {
+                mediaPlayer!!.stop()
+                mediaPlayer!!.release()
+                playSound()
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        mediaPlayer?.start()
+        mediaPlayer!!.setOnCompletionListener {
+            it.release()
+        }
+
+
+    }
+
+
 
     private fun setHighScore(score: Int) {
         val prefs = getSharedPreferences("puffNstuff", Context.MODE_PRIVATE)
@@ -180,13 +186,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onStop()
         scoreCount = 0
         scoreTextView.text = scoreCount.toString().padStart(3, '0')
+        daEnd = false
     }
 
     private fun checkScore(score: Int) {
-
         when (score) {
             10 -> {
-                Toast.makeText(this@MainActivity, "Guess what!?", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Might as well give up now, loser...", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[0]) {
                     arrayofAwards[0] = true
                     editTimer(mTimer, 10)
@@ -194,7 +200,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             }
             25 -> {
-                Toast.makeText(this@MainActivity, "Chicken Butt!!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Hah, is that what you call clickin'?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[1]) {
                     arrayofAwards[1] = true
                     editTimer(mTimer, 5)
@@ -234,7 +240,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             150 -> {
                 Toast.makeText(
                     this@MainActivity,
-                    "You trying to go to the PARK?!?",
+                    "You should try to go to the park!",
                     Toast.LENGTH_SHORT
                 ).show()
                 if (!arrayofAwards[4]) {
@@ -246,7 +252,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             }
             200 -> {
-                Toast.makeText(this@MainActivity, "What about the strip club?!", Toast.LENGTH_SHORT)
+                Toast.makeText(this@MainActivity, "This many clicks? Still more than your bank account! haha", Toast.LENGTH_SHORT)
                     .show()
                 if (!arrayofAwards[5]) {
                     arrayofAwards[5] = true
@@ -257,7 +263,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
             }
             400 -> {
-                Toast.makeText(this@MainActivity, "You like toast?", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, "Still clickin???? WHY, DUDE!?!", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[6]) {
                     arrayofAwards[6] = true
                     editTimer(mTimer, 5)
@@ -308,12 +314,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 }
                 scoreCount in 11..50 -> {
                     openURL.data =
-                        Uri.parse("https://www.nationalgeographic.com/content/dam/animals/thumbs/rights-exempt/mammals/g/giraffe_thumb.JPG")
+                        Uri.parse("https://media.distractify.com/brand-img/GXluu_Kub/0x0/carole-baskin-memes-3-1585580530588.jpeg")
                     startActivity(openURL)
                 }
                 scoreCount in 101..200 -> {
                     openURL.data =
-                        Uri.parse("https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/05/29/01/harambe.jpg?w968h681")
+                        Uri.parse("https://d18ufwot1963hr.cloudfront.net/wp-content-production/uploads/2020/04/img_5e8f953f82600.gif")
                     startActivity(openURL)
 
                 }
@@ -359,13 +365,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         override fun onFinish() {
             try {
-                val notification: Uri =
-                    RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-                val r =
-                    RingtoneManager.getRingtone(applicationContext, notification)
-                r.play()
                 vibrate(3000)
                 daEnd = true
+                playSoundBuzz()
                 checkScore(scoreCount)
                 mTimer?.cancel()
                 onStop()
@@ -436,29 +438,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                         scoreCanChange = true
                     }, 5000)
                 }
-//            val notification: Uri =
-//                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-//            val r =
-//                RingtoneManager.getRingtone(applicationContext, notification)
-//            r.play()
             }
         }
     }
 
-//    private fun setRewardURL(reward: Int, rewardArray: Array<String>){
-//        openURL.
-//    }
+        override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
 
-    private fun getCenterPointOfView(view: View): Point? {
-        val location = IntArray(2)
-        view.getLocationOnScreen(location)
-        val x = location[0] + view.width / 2
-        val y = location[1] + view.height / 2
-        return Point(x, y)
-    }
-
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
 
