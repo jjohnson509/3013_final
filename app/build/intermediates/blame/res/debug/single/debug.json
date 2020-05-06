@@ -1,9 +1,5 @@
 [
     {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_scoreboard.xml.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\scoreboard.xml"
     },
@@ -12,20 +8,52 @@
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\raw\\annoy_buzz.wav"
     },
     {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_button.xml.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\round_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\raw_cat_screech.wav.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\raw\\cat_screech.wav"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cool_cat.jpg.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\cool_cat.jpg"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\raw_soft_click.wav.flat",
@@ -40,20 +68,8 @@
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_button.xml.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\round_button.xml"
-    },
-    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\raw_cat_screech.wav.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\raw\\cat_screech.wav"
     },
     {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\raw_alien_click.mp3.flat",
@@ -68,14 +84,6 @@
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\drawable_kitty_attack.png.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\drawable\\kitty_attack.png"
     },
@@ -86,9 +94,5 @@
     {
         "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\jajoh\\Desktop\\final_project\\3013_final\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     }
 ]

@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         tvHighScore.text = getHighScore().toString().padStart(3, '0')
 
 
-        mTimer = Timer(30000)
+        mTimer = Timer(15000)
         setUpSensor()
 
 
@@ -203,7 +203,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Toast.makeText(this@MainActivity, "Hah, is that what you call clickin'?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[1]) {
                     arrayofAwards[1] = true
-                    editTimer(mTimer, 5)
                     cb1 = ChalkBoard(this)
                     backgroundLayout.addView(cb1)
                 }
@@ -213,7 +212,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Toast.makeText(this@MainActivity, "Wanna hear a joke?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[2]) {
                     arrayofAwards[2] = true
-                    editTimer(mTimer, 5)
                     cb2 = ChalkBoard(this)
                     backgroundLayout.addView(cb2)
                 }
@@ -222,7 +220,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Toast.makeText(this@MainActivity, "Your LIFE!!!", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[3]) {
                     arrayofAwards[3] = true
-                    editTimer(mTimer, 5)
                     cb3 = ChalkBoard(this)
                     backgroundLayout.addView(cb3)
                 }
@@ -231,7 +228,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             120 -> {
                 if (!arrayofAwards[3]) {
                     arrayofAwards[3] = true
-                    editTimer(mTimer, -5)
                     cb4 = ChalkBoard(this)
                     backgroundLayout.addView(cb4)
                 }
@@ -245,7 +241,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 ).show()
                 if (!arrayofAwards[4]) {
                     arrayofAwards[4] = true
-                    editTimer(mTimer, 5)
                     cb5 = ChalkBoard(this)
                     backgroundLayout.addView(cb5)
                 }
@@ -256,7 +251,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                     .show()
                 if (!arrayofAwards[5]) {
                     arrayofAwards[5] = true
-                    editTimer(mTimer, 10)
                     cb6 = ChalkBoard(this)
                     backgroundLayout.addView(cb6)
                 }
@@ -266,7 +260,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Toast.makeText(this@MainActivity, "Still clickin???? WHY, DUDE!?!", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[6]) {
                     arrayofAwards[6] = true
-                    editTimer(mTimer, 5)
                     cb7 = ChalkBoard(this)
                     backgroundLayout.addView(cb7)
                 }
@@ -280,7 +273,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Toast.makeText(this@MainActivity, "Cinnamon Rolls?", Toast.LENGTH_SHORT).show()
                 if (!arrayofAwards[7]) {
                     arrayofAwards[7] = true
-                    editTimer(mTimer, 5)
                     cb9 = ChalkBoard(this)
                     backgroundLayout.addView(cb9)
                 }
@@ -309,7 +301,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             when {
                 scoreCount <= 10 -> {
                     openURL.data =
-                        Uri.parse("https://www.thenation.com/wp-content/uploads/2019/12/mbeubeuss-fernelius-4-otu-img.jpg")
+                        Uri.parse("https://media1.popsugar-assets.com/files/thumbor/4Z5ajKlNa9fWNw4WBNYBT8KPlBg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/04/01/618/n/1922283/tmp_S6608V_5bab28b708359c09_giphy.gif")
                     startActivity(openURL)
                 }
                 scoreCount in 11..50 -> {
@@ -317,7 +309,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                         Uri.parse("https://media.distractify.com/brand-img/GXluu_Kub/0x0/carole-baskin-memes-3-1585580530588.jpeg")
                     startActivity(openURL)
                 }
-                scoreCount in 101..200 -> {
+                scoreCount in 51..200 -> {
                     openURL.data =
                         Uri.parse("https://d18ufwot1963hr.cloudfront.net/wp-content-production/uploads/2020/04/img_5e8f953f82600.gif")
                     startActivity(openURL)
@@ -325,7 +317,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 }
                 scoreCount in 201..300 -> {
                     openURL.data =
-                        Uri.parse("https://c7.uihere.com/files/169/350/488/ducky-dinosaur-foot-the-land-before-time-meme-dinosaur-cartoon.jpg")
+                        Uri.parse("https://media.giphy.com/media/12msOFU8oL1eww/giphy.gif")
                     startActivity(openURL)
 
                 }
@@ -364,14 +356,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
         override fun onFinish() {
+            playSoundBuzz()
+            vibrate(2000)
             try {
-                vibrate(3000)
-                daEnd = true
-                playSoundBuzz()
-                checkScore(scoreCount)
-                mTimer?.cancel()
-                onStop()
-                recreate()
+                Handler().postDelayed({
+                    daEnd = true
+                    checkScore(scoreCount)
+                    mTimer?.cancel()
+                    onStop()
+                    recreate()}, 3000)
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -423,7 +417,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         mAccelCurrent = sqrt((x * x + y * y + z * z).toDouble()).toFloat()
         val delta = mAccelCurrent - mAccelLast
         mAccel = mAccel * 0.9f + delta // perform low-cut filter
-        if (mAccel > 25) {
+        if (mAccel > 10) {
             if (firstPress) {
                 return
             } else {
