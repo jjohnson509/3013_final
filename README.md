@@ -38,17 +38,13 @@ During these trying times, everyone is looking to get their mind off the quarant
 ![](output/score_increase.png)
 3. The game will also remember your highest score:
 ![](output/high_score.png)
-4. Also as the user clicks the center button `CLICK ME!` the 3 shapes move around the screen:
+4. Also as the user clicks the center button `CLICK ME!` the kitty will move around the screen:
 ![](output/shapes_move01.png)
 ![](output/shapes_move02.png)
 ![](output/shapes_move03.png)
-5. At different stages in the game funny or silly messages popup, once again to facilitate the empytying of your mind:
+5. At different stages in the game funny or silly messages popup, once again to facilitate the emptying of your mind:
 ![](output/silly_message01.png)
-![](output/silly_message02.png)
-6. At different stages of the game the user will be attacked by cats, the user has to slap (i.e. swipe) them away.
-![](output/cat_attack.png)
-7. Finally the game ends when the user runs out of time. At which point the phone will shake and make a loud beeping sound to wake you from your mindless state:
-![](output/end_game.png)
+7. Finally the game ends when the user runs out of time. At which point the phone will shake, make a loud beeping sound, and link you to a random google gif/image to wake you from your mindless state:
 
 ---
 
